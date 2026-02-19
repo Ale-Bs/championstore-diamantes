@@ -3,140 +3,180 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tienda de Diamantes</title>
+<title>ChampionStore</title>
 
 <style>
 body{
   margin:0;
-  font-family: Arial, sans-serif;
-  background:#0b0f1a;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg,#0f172a,#111827);
   color:white;
 }
 
+/* HEADER */
 header{
-  background:linear-gradient(90deg,#111,#1a1a2e);
-  padding:20px;
   text-align:center;
-  font-size:28px;
+  padding:25px;
+  font-size:30px;
   font-weight:bold;
   letter-spacing:2px;
+  background:linear-gradient(90deg,#111,#1e293b);
 }
 
-.main{
+/* LAYOUT */
+.container{
   display:flex;
   flex-wrap:wrap;
-  padding:20px;
-  gap:20px;
+  gap:30px;
+  padding:30px;
 }
 
-/* PANEL ID */
+/* SIDEBAR */
 .sidebar{
-  background:#111827;
-  padding:20px;
-  border-radius:15px;
-  width:250px;
-  flex-grow:1;
+  background:#1e293b;
+  padding:25px;
+  border-radius:20px;
+  width:280px;
+  box-shadow:0 0 25px rgba(0,0,0,0.5);
 }
 
 .sidebar h3{
-  text-align:center;
   margin-bottom:15px;
 }
 
 input{
   width:100%;
   padding:12px;
+  border-radius:12px;
   border:none;
-  border-radius:10px;
-  margin-bottom:15px;
-  background:#1f2937;
+  background:#0f172a;
   color:white;
+  margin-bottom:15px;
 }
 
-.confirmar{
+.confirm{
   width:100%;
   padding:12px;
-  background:#ff6600;
   border:none;
-  border-radius:10px;
+  border-radius:12px;
+  background:#ff6600;
   color:white;
   cursor:pointer;
   transition:0.3s;
 }
 
-.confirmar:hover{
+.confirm:hover{
   background:#ff8800;
 }
 
-/* TIENDA */
+/* STORE */
 .store{
-  flex:3;
+  flex:1;
 }
 
 .grid{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap:20px;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap:25px;
 }
 
 .card{
-  background:#1f2937;
-  padding:20px;
-  border-radius:15px;
+  background:#1e293b;
+  padding:25px;
+  border-radius:20px;
   text-align:center;
   transition:0.3s;
+  box-shadow:0 0 20px rgba(0,0,0,0.4);
 }
 
 .card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 0 20px orange;
+  transform:translateY(-10px);
+  box-shadow:0 0 25px rgba(255,102,0,0.6);
 }
 
-.precio{
+.card h3{
+  font-size:22px;
+}
+
+.price{
   color:#00ff99;
   font-size:20px;
   margin:10px 0;
 }
 
-button{
-  background:#ff6600;
-  border:none;
+.buy{
   padding:10px 20px;
-  border-radius:10px;
+  border:none;
+  border-radius:12px;
+  background:#ff6600;
   color:white;
   cursor:pointer;
   transition:0.3s;
 }
 
-button:hover{
+.buy:hover{
   background:#ff8800;
+  transform:scale(1.05);
 }
 
-/* METODOS DE PAGO */
-.pagos{
+/* PAGOS */
+.payments{
   margin-top:40px;
   text-align:center;
 }
 
-.pagos div{
-  display:inline-block;
-  background:#1f2937;
-  padding:15px 25px;
-  margin:10px;
-  border-radius:10px;
-  cursor:pointer;
-  transition:0.3s;
+.payments h3{
+  margin-bottom:15px;
 }
 
-.pagos div:hover{
+.method{
+  display:inline-block;
+  padding:15px 25px;
+  margin:10px;
+  border-radius:15px;
+  background:#1e293b;
+  cursor:pointer;
+  transition:0.3s;
+  border:2px solid transparent;
+}
+
+.method:hover{
   background:#ff6600;
 }
 
-footer{
-  text-align:center;
+.method.active{
+  border:2px solid #00ff99;
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-content{
+  background:#1e293b;
   padding:30px;
-  font-size:13px;
-  color:#777;
+  border-radius:20px;
+  text-align:center;
+  width:300px;
+}
+
+.close{
+  margin-top:15px;
+  padding:8px 15px;
+  border:none;
+  border-radius:10px;
+  background:#ff6600;
+  color:white;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -144,15 +184,15 @@ footer{
 <body>
 
 <header>
-TIENDA DE DIAMANTES
+CHAMPIONSTORE 💎
 </header>
 
-<div class="main">
+<div class="container">
 
 <div class="sidebar">
-<h3>👤 Ingresa tu ID</h3>
-<input type="text" placeholder="ID de jugador">
-<button class="confirmar">Confirmar</button>
+<h3>👤 ID del Jugador</h3>
+<input type="text" id="playerID" placeholder="Ingresa tu ID">
+<button class="confirm">Confirmar</button>
 </div>
 
 <div class="store">
@@ -160,45 +200,77 @@ TIENDA DE DIAMANTES
 <div class="grid">
   <div class="card">
     <h3>💎 110</h3>
-    <div class="precio">$1.00</div>
-    <button onclick="window.location.href='https://pagostore.garena.com/'">Comprar</button>
+    <div class="price">$1.00</div>
+    <button class="buy" onclick="openModal('110 Diamantes','$1.00')">Comprar</button>
   </div>
 
   <div class="card">
     <h3>💎 341</h3>
-    <div class="precio">$3.00</div>
-    <button onclick="window.location.href='https://pagostore.garena.com/'">Comprar</button>
+    <div class="price">$3.00</div>
+    <button class="buy" onclick="openModal('341 Diamantes','$3.00')">Comprar</button>
   </div>
 
   <div class="card">
     <h3>💎 572</h3>
-    <div class="precio">$5.00</div>
-    <button onclick="window.location.href='https://pagostore.garena.com/'">Comprar</button>
+    <div class="price">$5.00</div>
+    <button class="buy" onclick="openModal('572 Diamantes','$5.00')">Comprar</button>
   </div>
 
   <div class="card">
     <h3>💎 1166</h3>
-    <div class="precio">$10.00</div>
-    <button onclick="window.location.href='https://pagostore.garena.com/'">Comprar</button>
+    <div class="price">$10.00</div>
+    <button class="buy" onclick="openModal('1166 Diamantes','$10.00')">Comprar</button>
   </div>
 </div>
 
-<div class="pagos">
-<h3>💳 Selecciona método de pago</h3>
-<div>Visa</div>
-<div>MasterCard</div>
-<div>PayPal</div>
-<div>Google Pay</div>
-<div>Apple Pay</div>
+<div class="payments">
+<h3>💳 Método de Pago</h3>
+<div class="method" onclick="selectMethod(this)">Visa</div>
+<div class="method" onclick="selectMethod(this)">MasterCard</div>
+<div class="method" onclick="selectMethod(this)">PayPal</div>
+<div class="method" onclick="selectMethod(this)">Google Pay</div>
 </div>
 
 </div>
-
 </div>
 
-<footer>
-Esta página no está afiliada oficialmente a Free Fire ni a Garena.
-</footer>
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h3>Resumen de Compra</h3>
+    <p id="summary"></p>
+    <button class="close" onclick="closeModal()">Cerrar</button>
+  </div>
+</div>
+
+<script>
+let selectedMethod = "";
+
+function selectMethod(element){
+  document.querySelectorAll(".method").forEach(m => m.classList.remove("active"));
+  element.classList.add("active");
+  selectedMethod = element.innerText;
+}
+
+function openModal(pack,price){
+  const id = document.getElementById("playerID").value;
+  if(id === ""){
+    alert("Ingresa tu ID primero");
+    return;
+  }
+  if(selectedMethod === ""){
+    alert("Selecciona un método de pago");
+    return;
+  }
+  document.getElementById("summary").innerHTML =
+    "ID: "+id+"<br>Paquete: "+pack+"<br>Precio: "+price+"<br>Método: "+selectedMethod;
+  document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+}
+</script>
 
 </body>
-  </html>
+</html>
