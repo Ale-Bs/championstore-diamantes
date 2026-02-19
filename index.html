@@ -13,7 +13,6 @@ body{
   color:white;
 }
 
-/* HEADER */
 header{
   text-align:center;
   padding:25px;
@@ -23,7 +22,6 @@ header{
   background:linear-gradient(90deg,#111,#1e293b);
 }
 
-/* LAYOUT */
 .container{
   display:flex;
   flex-wrap:wrap;
@@ -31,7 +29,6 @@ header{
   padding:30px;
 }
 
-/* SIDEBAR */
 .sidebar{
   background:#1e293b;
   padding:25px;
@@ -69,7 +66,6 @@ input{
   background:#ff8800;
 }
 
-/* STORE */
 .store{
   flex:1;
 }
@@ -119,7 +115,6 @@ input{
   transform:scale(1.05);
 }
 
-/* PAGOS */
 .payments{
   margin-top:40px;
   text-align:center;
@@ -148,7 +143,6 @@ input{
   border:2px solid #00ff99;
 }
 
-/* MODAL */
 .modal{
   position:fixed;
   top:0;
@@ -201,76 +195,38 @@ CHAMPIONSTORE 💎
   <div class="card">
     <h3>💎 110</h3>
     <div class="price">$1.00</div>
-    <button class="buy" onclick="openModal('110 Diamantes','$1.00')">Comprar</button>
+    <button class="buy">Comprar</button>
   </div>
 
   <div class="card">
     <h3>💎 341</h3>
     <div class="price">$3.00</div>
-    <button class="buy" onclick="openModal('341 Diamantes','$3.00')">Comprar</button>
+    <button class="buy">Comprar</button>
   </div>
 
   <div class="card">
     <h3>💎 572</h3>
     <div class="price">$5.00</div>
-    <button class="buy" onclick="openModal('572 Diamantes','$5.00')">Comprar</button>
+    <button class="buy">Comprar</button>
   </div>
 
   <div class="card">
     <h3>💎 1166</h3>
     <div class="price">$10.00</div>
-    <button class="buy" onclick="openModal('1166 Diamantes','$10.00')">Comprar</button>
+    <button class="buy">Comprar</button>
   </div>
 </div>
 
 <div class="payments">
 <h3>💳 Método de Pago</h3>
-<div class="method" onclick="selectMethod(this)">Visa</div>
-<div class="method" onclick="selectMethod(this)">MasterCard</div>
-<div class="method" onclick="selectMethod(this)">PayPal</div>
-<div class="method" onclick="selectMethod(this)">Google Pay</div>
+<div class="method">Visa</div>
+<div class="method">MasterCard</div>
+<div class="method">PayPal</div>
+<div class="method">Google Pay</div>
 </div>
 
 </div>
 </div>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <h3>Resumen de Compra</h3>
-    <p id="summary"></p>
-    <button class="close" onclick="closeModal()">Cerrar</button>
-  </div>
-</div>
-
-<script>
-let selectedMethod = "";
-
-function selectMethod(element){
-  document.querySelectorAll(".method").forEach(m => m.classList.remove("active"));
-  element.classList.add("active");
-  selectedMethod = element.innerText;
-}
-
-function openModal(pack,price){
-  const id = document.getElementById("playerID").value;
-  if(id === ""){
-    alert("Ingresa tu ID primero");
-    return;
-  }
-  if(selectedMethod === ""){
-    alert("Selecciona un método de pago");
-    return;
-  }
-  document.getElementById("summary").innerHTML =
-    "ID: "+id+"<br>Paquete: "+pack+"<br>Precio: "+price+"<br>Método: "+selectedMethod;
-  document.getElementById("modal").style.display="flex";
-}
-
-function closeModal(){
-  document.getElementById("modal").style.display="none";
-}
-</script>
 
 </body>
 </html>
