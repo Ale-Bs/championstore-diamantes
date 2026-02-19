@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tienda de Diamantes</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#0b0f1a;
+  color:white;
+}
+
+header{
+  background:linear-gradient(90deg,#111,#1a1a2e);
+  padding:20px;
+  text-align:center;
+  font-size:28px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.main{
+  display:flex;
+  flex-wrap:wrap;
+  padding:20px;
+  gap:20px;
+}
+
+/* PANEL ID */
+.sidebar{
+  background:#111827;
+  padding:20px;
+  border-radius:15px;
+  width:250px;
+  flex-grow:1;
+}
+
+.sidebar h3{
+  text-align:center;
+  margin-bottom:15px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  margin-bottom:15px;
+  background:#1f2937;
+  color:white;
+}
+
+.confirmar{
+  width:100%;
+  padding:12px;
+  background:#ff6600;
+  border:none;
+  border-radius:10px;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.confirmar:hover{
+  background:#ff8800;
+}
+
+/* TIENDA */
+.store{
+  flex:3;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:#1f2937;
+  padding:20px;
+  border-radius:15px;
+  text-align:center;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 20px orange;
+}
+
+.precio{
+  color:#00ff99;
+  font-size:20px;
+  margin:10px 0;
+}
+
+button{
+  background:#ff6600;
+  border:none;
+  padding:10px 20px;
+  border-radius:10px;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#ff8800;
+}
+
+/* METODOS DE PAGO */
+.pagos{
+  margin-top:40px;
+  text-align:center;
+}
+
+.pagos div{
+  display:inline-block;
+  background:#1f2937;
+  padding:15px 25px;
+  margin:10px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.pagos div:hover{
+  background:#ff6600;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  font-size:13px;
+  color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+TIENDA DE DIAMANTES
+</header>
+
+<div class="main">
+
+<div class="sidebar">
+<h3>👤 Ingresa tu ID</h3>
+<input type="text" placeholder="ID de jugador">
+<button class="confirmar">Confirmar</button>
+</div>
+
+<div class="store">
+
+<div class="grid">
+  <div class="card">
+    <h3>💎 110</h3>
+    <div class="precio">$1.00</div>
+    <button onclick="window.location.href='https://pagostore.garena.com/'">Comprar</button>
+  </div>
+
+  <div class="card">
+    <h3>💎 341</h3>
+    <div class="precio">$3.00</div>
+    <button onclick="window.location.href='https://pagostore.garena.com/'">Comprar</button>
+  </div>
+
+  <div class="card">
+    <h3>💎 572</h3>
+    <div class="precio">$5.00</div>
+    <button onclick="window.location.href='https://pagostore.garena.com/'">Comprar</button>
+  </div>
+
+  <div class="card">
+    <h3>💎 1166</h3>
+    <div class="precio">$10.00</div>
+    <button onclick="window.location.href='https://pagostore.garena.com/'">Comprar</button>
+  </div>
+</div>
+
+<div class="pagos">
+<h3>💳 Selecciona método de pago</h3>
+<div>Visa</div>
+<div>MasterCard</div>
+<div>PayPal</div>
+<div>Google Pay</div>
+<div>Apple Pay</div>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+Esta página no está afiliada oficialmente a Free Fire ni a Garena.
+</footer>
+
+</body>
+  </html>
